@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "template",
+	"version": "${version}",
+	"name": "Unfocused Template",
+	"description": "An uninitialized Unfocused mod",
+	"authors": [ "SSBlur" ],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/ssblur/unfocused-template"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/template/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.ssblur.template.fabric.TemplateFabric"
+		],
+		"client": [
+			"com.ssblur.template.fabric.TemplateFabric"
+		]
+	},
+	"mixins": [
+		"template.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=${fabric_loader_version}",
+		"minecraft": ">=${minecraft_version}",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*",
+		"unfocused": ">=${unfocused_version}"
+	},
+	"suggests": {}
+}

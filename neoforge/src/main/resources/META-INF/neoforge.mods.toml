@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/ssblur/unfocused-template/issues"
+license = "CC0-1.0"
+
+[[mods]]
+modId = "template"
+version = "${version}"
+displayName = "Unfocused Template"
+authors = "SSBlur"
+description = '''
+An uninitialized Unfocused mod
+'''
+logoFile = "icon.png"
+
+[[dependencies.template]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.template]]
+modId = "minecraft"
+type = "required"
+versionRange = "[${minecraft_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.template]]
+modId = "unfocused"
+type = "required"
+versionRange = "[${unfocused_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "template.mixins.json"

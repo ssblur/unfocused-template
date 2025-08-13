@@ -43,10 +43,8 @@ dependencies {
 
   modImplementation("com.ssblur.unfocused:unfocused-neoforge:${rootProject.unfocused_version}")
 
-  common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+  common(project(path: ':common', configuration: 'namedElements'))
   shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
-
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 shadowJar {
@@ -58,5 +56,5 @@ remapJar {
   input.set shadowJar.archiveFile
 }
 kotlin {
-  jvmToolchain(21)
+  jvmToolchain(rootProject.jvm_version as Integer)
 }

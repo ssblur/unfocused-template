@@ -21,4 +21,4 @@ rootProject.name = 'template'
 
 include 'common'
 include 'fabric'
-include 'neoforge'
+//include 'neoforge'

@@ -1,5 +1,5 @@
 plugins {
-  id 'com.github.johnrengelman.shadow'
+  id 'com.gradleup.shadow'
   id 'org.jetbrains.kotlin.jvm'
 }
 
@@ -41,9 +41,9 @@ dependencies {
   neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
   implementation("thedarkcolour:kotlinforforge-neoforge:$rootProject.kff_version") { transitive false }
 
-  modImplementation("com.ssblur.unfocused:unfocused-neoforge:${rootProject.unfocused_version}")
+  implementation("com.ssblur.unfocused:unfocused-neoforge:${rootProject.unfocused_version}")
 
-  common(project(path: ':common', configuration: 'namedElements'))
+  common(project(path: ':common'))
   shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 }
 
@@ -52,9 +52,14 @@ shadowJar {
   archiveClassifier = 'dev-shadow'
 }
 
-remapJar {
-  input.set shadowJar.archiveFile
+jar {
+  dependsOn shadowJar
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+  from (zipTree(shadowJar.archiveFile))
+
+  // todo verify accesswideners function as expected and transform if necessary
 }
+
 kotlin {
-  jvmToolchain(rootProject.jvm_version as Integer)
+  jvmToolchain(rootProject.jvm_version.toInteger())
 }
